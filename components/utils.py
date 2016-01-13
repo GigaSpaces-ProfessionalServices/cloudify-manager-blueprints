@@ -44,11 +44,12 @@ def run(command, retries=0, ignore_failures=False):
     return proc
 
 
-def sudo(command):
+def sudo(command, retries=0):
+    # run(shlex.split(' '.join(command).insert(0, sudo)))
     if isinstance(command, str):
         command = shlex.split(command)
     command.insert(0, 'sudo')
-    run(command)
+    return run(command, retries)
 
 
 def error_exit(message):
@@ -389,8 +390,16 @@ def chown(user, group, path):
 
 
 def clean_var_log_dir(service):
-    pass
-
+    path = "/var/log/{0}".format(service)
+    logfiles = [f for f in os.listdir(path) if os.path.isfile(
+            os.path.join(path, f))]
+    for f in logfiles:
+        os.rename(f, "/var/log/cloudify/{0}/{1}-from_bootstrap-".format(
+                service, time.strftime('%Y-%m-%d %H_%M_%S')))
+    ctx.logger.info(
+            "Removing unnecessary logs directory: /var/log/${0}".format(
+                    service))
+    os.remove(path)
 
 def untar(source, destination='/tmp', strip=1):
     # TODO: use tarfile instead
