@@ -159,6 +159,12 @@ user_public_key: ssh-rsa...
 
 #nodejs_source_url: http://repository.cloudifysource.org/org/cloudify3/components/node-v0.10.35-linux-x64.tar.gz
 
+##################################
+# Management Workers configuration
+##################################
+
+#management_worker_log_level: info
+
 #############################
 # RabbitMQ Configuration
 #############################

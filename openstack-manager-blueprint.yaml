@@ -350,6 +350,16 @@ inputs:
     default: 102400
 
   #############################
+  # Management Workers Inputs
+  #############################
+
+  management_worker_log_level:
+    description: >
+      Logging level for the management workers.
+    type: string
+    default: info
+
+  #############################
   # Elasticsearch Inputs
   #############################
   # https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html
