@@ -629,6 +629,18 @@ node_types:
         description: Logging level for Celery worker.
         type: string
         default: { get_input: management_worker_log_level }
+      max_tasks_per_child:
+        description: Maximum number of tasks to run in child process before recycling.
+        type: integer
+        default: { get_input: management_worker_max_tasks_per_child }
+      autoscale_min:
+        description: Minimum number of celery processes to have.
+        type: integer
+        default: { get_input: management_worker_autoscale_min }
+      autoscale_max:
+        description: Maximum number of celery processes to have.
+        type: integer
+        default: { get_input: management_worker_autoscale_max }
     interfaces:
       cloudify.interfaces.lifecycle:
         create:

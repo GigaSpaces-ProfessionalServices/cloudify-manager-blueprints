@@ -454,6 +454,24 @@ inputs:
     type: string
     default: info
 
+  management_worker_max_tasks_per_child:
+    description: >
+      Maximum number of tasks to run in a worker process before recycling it.
+    type: integer
+    default: 0
+
+  management_worker_autoscale_min:
+    description: >
+      Minimum number of management worker processes.
+    type: integer
+    default: 2
+
+  management_worker_autoscale_max:
+    description: >
+      Maximum number of management worker processes.
+    type: integer
+    default: 5
+
   #############################
   # Elasticsearch Inputs
   #############################

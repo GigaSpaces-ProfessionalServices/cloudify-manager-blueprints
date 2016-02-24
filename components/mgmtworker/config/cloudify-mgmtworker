@@ -13,3 +13,6 @@ CELERY_TASK_SERIALIZER="json"
 CELERY_RESULT_SERIALIZER="json"
 CELERY_RESULT_BACKEND="amqp"
 C_FORCE_ROOT=true
+AUTOSCALE_MIN="{{ ctx.node.properties.autoscale_min }}"
+AUTOSCALE_MAX="{{ ctx.node.properties.autoscale_max }}"
+MAX_TASKS_PER_CHILD="{{ ctx.node.properties.max_tasks_per_child}}"
