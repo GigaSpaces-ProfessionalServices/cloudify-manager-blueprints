@@ -53,6 +53,8 @@ external_network_name: ''
 #use_existing_management_subnet: false
 # Set to the desired CIDR for use with the subnet.
 #management_subnet_cidr: 10.67.79.0/24
+# DNS entries to add to subnet. Defaults to none.
+#management_subnet_dns_nameservers: []
 # Set to true if you want to use an existing router
 #use_existing_management_router: false
 # Set to true if you want to use an existing manager security group
