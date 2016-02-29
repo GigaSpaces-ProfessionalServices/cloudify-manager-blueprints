@@ -10,8 +10,8 @@ except KeyError:
     security_enabled = False
 
 if security_enabled:
-    missing_keys = set([constants.CLOUDIFY_USERNAME_ENV,
-                        constants.CLOUDIFY_PASSWORD_ENV]) -\
+    missing_keys = {constants.CLOUDIFY_USERNAME_ENV,
+                    constants.CLOUDIFY_PASSWORD_ENV} -\
                    set(os.environ.keys())
 
     if missing_keys:
