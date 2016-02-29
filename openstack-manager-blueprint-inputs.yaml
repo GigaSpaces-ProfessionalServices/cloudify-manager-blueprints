@@ -38,6 +38,9 @@ external_network_name: ''
 # SSH user used to connect to the manager
 #ssh_user: centos
 
+# Password for SSH user
+#ssh_password: ''
+
 # Names of the openstack components
 #manager_server_name: cloudify-manager-server
 #management_network_name: cloudify-management-network
