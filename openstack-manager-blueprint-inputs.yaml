@@ -155,7 +155,7 @@ agents_user: ''
 ##################################
 
 #management_worker_log_level: info
-#management_worker_max_tasks_per_child: 0
+#management_worker_max_tasks_per_child: 10
 #management_worker_autoscale_min: 2
 #management_worker_autoscale_max: 5
 
