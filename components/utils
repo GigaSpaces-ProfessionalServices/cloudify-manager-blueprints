@@ -513,6 +513,7 @@ function deploy_logrotate_config() {
     ctx logger info "Configuring logrotate for ${service}..."
     deploy_blueprint_resource "components/${service}/config/logrotate" ${logrotate_config_path}
     sudo chmod 644 ${logrotate_config_path}
+    sudo chown root:root ${logrotate_config_path}
 }
 
 function get_rabbitmq_endpoint_ip() {
