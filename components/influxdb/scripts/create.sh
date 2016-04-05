@@ -42,6 +42,11 @@ function install_influxdb() {
     sudo chown -R influxdb:influxdb ${INFLUXDB_LOG_PATH}
 
     configure_systemd_service "influxdb"
+
+    # Stop and disable the influxdb service which is installed through yum.
+    ctx logger info "Stopping and disabling yum-installed InfluxDB service..."
+    sudo systemctl stop influxdb
+    sudo systemctl disable influxdb
 }
 
 if [ -z "${INFLUXDB_ENDPOINT_IP}" ]; then
