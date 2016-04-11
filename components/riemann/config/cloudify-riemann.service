@@ -1,6 +1,6 @@
 [Unit]
 Description=Riemann Service
-Requires=cloudify-rabbitmq.service
+Wants=cloudify-rabbitmq.service
 After=cloudify-rabbitmq.service
 
 [Service]

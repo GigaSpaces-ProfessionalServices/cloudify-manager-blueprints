@@ -1,6 +1,6 @@
 [Unit]
 Description=Cloudify WebUI Service
-Requires=network-online.target
+Wants=network-online.target
 After=network-online.target
 
 [Service]

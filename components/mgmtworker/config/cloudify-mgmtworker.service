@@ -1,6 +1,6 @@
 [Unit]
 Description=Cloudify Management Worker Service
-Requires=cloudify-rabbitmq.service
+Wants=cloudify-rabbitmq.service
 After=cloudify-rabbitmq.service
 
 [Service]

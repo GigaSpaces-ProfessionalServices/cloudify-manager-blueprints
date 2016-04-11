@@ -1,6 +1,6 @@
 [Unit]
 Description=Cloudify AMQP InfluxDB Broker Service
-Requires=cloudify-influxdb.service cloudify-rabbitmq.service
+Wants=cloudify-influxdb.service cloudify-rabbitmq.service
 After=cloudify-influxdb.service cloudify-rabbitmq.service
 
 [Service]
