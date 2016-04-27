@@ -1,3 +1,10 @@
+####################################
+# Maintenance branch specific inputs
+####################################
+
+rest_service_source_url: https://github.com/GigaSpaces-ProfessionalServices/cloudify-manager/archive/3.3.1-maint.zip
+cli_source_url: https://github.com/GigaSpaces-ProfessionalServices/cloudify-cli/archive/3.3.1-maint.zip
+
 #############################
 # Provider specific Inputs
 #############################
@@ -252,6 +259,13 @@ aws_secret_access_key: ''
 # Note that the port is currently not configurable and must remain 8086.
 # Also note that the database username and password are hardcoded to root:root.
 #influxdb_endpoint_ip: ''
+
+#############################
+# nginx inputs
+#############################
+#nginx_proxy_connect_timeout: 60
+#nginx_proxy_send_timeout: 60
+#nginx_proxy_read_timeout: 60
 
 #############################
 # Import resolver inputs

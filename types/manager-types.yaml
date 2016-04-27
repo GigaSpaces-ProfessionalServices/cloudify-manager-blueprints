@@ -393,6 +393,15 @@ node_types:
         description: REST Service repo tar URL for resources
         type: string
         default: { get_input: rest_service_source_url }
+      proxy_connect_timeout:
+        type: integer
+        default: { get_input: nginx_proxy_connect_timeout }
+      proxy_send_timeout:
+        type: integer
+        default: { get_input: nginx_proxy_send_timeout }
+      proxy_read_timeout:
+        type: integer
+        default: { get_input: nginx_proxy_read_timeout }
     interfaces:
       cloudify.interfaces.lifecycle:
         create:

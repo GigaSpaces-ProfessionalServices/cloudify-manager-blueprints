@@ -427,6 +427,21 @@ inputs:
     default: ''
 
   #############################
+  # nginx Inputs
+  #############################
+  nginx_proxy_connect_timeout:
+    type: integer
+    default: 60
+
+  nginx_proxy_send_timeout:
+    type: integer
+    default: 60
+
+  nginx_proxy_read_timeout:
+    type: integer
+    default: 60
+
+  #############################
   # Import resolver inputs
   #############################
 
@@ -703,6 +718,20 @@ node_templates:
       - type: cloudify.aws.relationships.instance_connected_to_security_group
         target: management_security_group
 
+  manager_update:
+    type: cloudify.nodes.Root
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        configure:
+          implementation: fabric.fabric_plugin.tasks.run_commands
+          inputs:
+            commands:
+              - sudo yum -y install unzip
+            fabric_env: *manager_fabric_env
+    relationships:
+      - type: cloudify.relationships.depends_on
+        target: manager_host
+
   # #####################################################################
   # The Python and Java nodes are used to provide runtime environments
   # on specific hosts. It allows us to define the runtime environment
@@ -717,12 +746,16 @@ node_templates:
     relationships:
       - type: cloudify.relationships.contained_in
         target: manager_host
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   java_runtime:
     type: manager.nodes.JavaRuntime
     relationships:
       - type: cloudify.relationships.contained_in
         target: manager_host
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   ######################################################################
   # These are the nodes comprising the Cloudify Manager's components
@@ -732,6 +765,8 @@ node_templates:
     relationships:
       - type: cloudify.relationships.contained_in
         target: manager_host
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   elasticsearch:
     type: manager.nodes.Elasticsearch
@@ -740,6 +775,8 @@ node_templates:
         target: manager_host
       - type: cloudify.relationships.depends_on
         target: java_runtime
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   logstash:
     type: manager.nodes.Logstash
@@ -750,12 +787,16 @@ node_templates:
         target: java_runtime
       - type: logstash_to_elasticsearch
         target: elasticsearch
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   influxdb:
     type: manager.nodes.InfluxDB
     relationships:
       - type: cloudify.relationships.contained_in
         target: manager_host
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   nginx:
     type: manager.nodes.Nginx
@@ -766,6 +807,8 @@ node_templates:
         target: manager_configuration
       - type: nginx_to_restservice
         target: rest_service
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   riemann:
     type: manager.nodes.Riemann
@@ -778,6 +821,8 @@ node_templates:
         target: rabbitmq
       - type: riemann_to_nginx
         target: nginx
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   rest_service:
     type: manager.nodes.RestService
@@ -792,6 +837,8 @@ node_templates:
         target: elasticsearch
       - type: restservice_to_rabbitmq
         target: rabbitmq
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   mgmt_worker:
     type: manager.nodes.ManagementWorker
@@ -804,6 +851,8 @@ node_templates:
         target: rabbitmq
       - type: mgmtworker_to_nginx
         target: nginx
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   amqp_influx:
     type: manager.nodes.AmqpInfluxBroker
@@ -816,6 +865,8 @@ node_templates:
         target: rabbitmq
       - type: amqpinflux_to_influxdb
         target: influxdb
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   webui:
     type: manager.nodes.WebUI
@@ -826,6 +877,8 @@ node_templates:
         target: rest_service
       - type: webui_to_influxdb
         target: influxdb
+      - type: cloudify.relationships.depends_on
+        target: manager_update
 
   ######################################################################
   # Enable this node if you want to have the CLI installed within
