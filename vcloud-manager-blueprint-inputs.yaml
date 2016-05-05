@@ -4,6 +4,7 @@
 
 rest_service_source_url: https://github.com/GigaSpaces-ProfessionalServices/cloudify-manager/archive/3.3.1-maint.zip
 cli_source_url: https://github.com/GigaSpaces-ProfessionalServices/cloudify-cli/archive/3.3.1-maint.zip
+plugins_common_source_url: https://github.com/GigaSpaces-ProfessionalServices/cloudify-plugins-common/archive/3.3.1-maint.zip
 
 #############################
 # vCloud specific Inputs
