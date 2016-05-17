@@ -147,13 +147,13 @@ plugins_common_source_url: https://github.com/GigaSpaces-ProfessionalServices/cl
 # agent installer to identify it for your distro and release automatically.
 # Note that the windows agent key name MUST be `cloudify_windows_agent`
 agent_package_urls:
-#  ubuntu_trusty_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/Ubuntu-trusty-agent_3.3.1-sp-b310.tar.gz
-#  ubuntu_precise_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/Ubuntu-precise-agent_3.3.1-sp-b310.tar.gz
+  ubuntu_trusty_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/Ubuntu-trusty-agent_3.3.1-sp-b310.tar.gz
+  ubuntu_precise_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/Ubuntu-precise-agent_3.3.1-sp-b310.tar.gz
   centos_7x_agent: https://s3-eu-west-1.amazonaws.com/gigaspaces-delivery/3.3.1-maint/centos-Core-agent_3.3.1-maint-b001.tar.gz
-#  centos_6x_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/centos-Final-agent_3.3.1-sp-b310.tar.gz
-#  redhat_7x_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/redhat-Maipo-agent_3.3.1-sp-b310.tar.gz
-#  redhat_6x_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/redhat-Santiago-agent_3.3.1-sp-b310.tar.gz
-#  cloudify_windows_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/cloudify-windows-agent_3.3.1-sp-b310.exe
+  centos_6x_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/centos-Final-agent_3.3.1-sp-b310.tar.gz
+  redhat_7x_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/redhat-Maipo-agent_3.3.1-sp-b310.tar.gz
+  redhat_6x_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/redhat-Santiago-agent_3.3.1-sp-b310.tar.gz
+  cloudify_windows_agent: http://repository.cloudifysource.org/org/cloudify3/3.3.1/sp-RELEASE/cloudify-windows-agent_3.3.1-sp-b310.exe
 
 #############################
 # Cloudify Modules
