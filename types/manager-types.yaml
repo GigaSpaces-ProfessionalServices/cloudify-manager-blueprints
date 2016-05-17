@@ -285,6 +285,9 @@ node_types:
       es_endpoint_port:
         type: integer
         default: { get_input: elasticsearch_endpoint_port }
+      es_bind_address:
+        type: string
+        default: { get_input: elasticsearch_bind_address }
     interfaces:
       cloudify.interfaces.lifecycle:
         create:

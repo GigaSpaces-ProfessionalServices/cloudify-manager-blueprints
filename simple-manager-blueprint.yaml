@@ -333,6 +333,11 @@ inputs:
   #############################
   # Elasticsearch Inputs
   #############################
+  elasticsearch_bind_address:
+    description: The interface for Elastic Search to bind to. Defaults to 0.0.0.0, which means all interfaces.
+    type: string
+    default: 0.0.0.0
+
   # https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html
   elasticsearch_heap_size:
     type: string
